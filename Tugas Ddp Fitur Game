@@ -20,27 +20,44 @@ int main(){
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLUE);
 	init_pair(2, COLOR_WHITE, COLOR_CYAN);	
+	init_pair(3, COLOR_WHITE, COLOR_BLACK);	
 
+	attron(COLOR_PAIR(2));
+	mvprintw(12, 50, "     LOGGED IN      ");
+	mvprintw(13, 50, " ------------------ ");
+	mvprintw(14, 50, "|                  |");
+	mvprintw(15, 50, " ------------------ ");
+		
+	int load = 1;
+		
+	for (int j = 1; j <= 100; j++){
+		if (j % 6 == 0 ) load++;
+		attron(COLOR_PAIR(1));
+		mvprintw(14, 50 + load, " ");
 		attron(COLOR_PAIR(2));
-		mvprintw(12, 50, "     LOGGED IN      ");
-		mvprintw(13, 50, " ------------------ ");
-		mvprintw(14, 50, "|                  |");
-		mvprintw(15, 50, " ------------------ ");
-		
-		int load = 1;
-		
-		for (int j = 1; j <= 100 ; j++){
-			if (j % 6 == 0 ) load++;
-			attron(COLOR_PAIR(1));
-			mvprintw(14, 50 + load, " ");
-			attron(COLOR_PAIR(2));
-			mvprintw(16, 54, "Loading ");
-			mvprintw(16, 63, "  %%", j);
-			mvprintw(16, 62, "%d");
-			refresh();
-			Sleep(50);
+		mvprintw(16, 54, "Loading ");
+		mvprintw(16, 63, "  %%", j);
+		mvprintw(16, 62, "%d");
+		refresh();
+		Sleep(50);
 		}
 	
+	clear();
+	bkgd(COLOR_PAIR(2));
+	
+	for (int f = 2; f < LINES + 5; f++){	
+	attron(COLOR_PAIR(2));
+    mvprintw(25-f,21," db   d8b   db   d88888b   db         .o88b.    .d88b.    .88b  d88.   d88888b       ");
+    mvprintw(26-f,21," 88   I8I   88   88        88        d8P  Y8   .8P  Y8.   88'YbdP`88   88            ");
+    mvprintw(27-f,21," 88   I8I   88   88ooooo   88        8P        88    88   88  88  88   88ooooo       ");
+    mvprintw(28-f,21," Y8   I8I   88   88ooooo   88        8b        88    88   88  88  88   88ooooo       ");           
+    mvprintw(29-f,21," `8b d8'8b d8'   88        88boooo   Y8b  d8   `8b  d8'   88  88  88   88            ");
+    mvprintw(30-f,21,"  `8b8' `8d8'    Y88888P   Y88888P    `Y88P'    `Y88P'    YP  YP  YP   Y88888P       ");
+    mvprintw(31-f,21,"                                                                                     ");
+    refresh();
+    Sleep(100);
+}
+	getch();
 	endwin();
 	return 0;
 }
