@@ -76,3 +76,35 @@ void loadingawal() {
 		
 	endwin();
 }
+
+void SignUp() {
+    ofstream myFile, accList;
+    string username, password;
+
+    system("cls");
+    cout << "------------> SIGN UP <------------" << endl;
+    cout << "Enter Username: ";
+    cin >> username;
+
+    cout << "Enter Password: ";
+    cin >> password;
+    cout << endl;
+
+    myFile.open(username + ".txt");
+    if (!myFile) {
+        cout << "Error opening file for user data!" << endl;
+        return;
+    }
+    myFile << password;
+    myFile.close();
+
+    accList.open("ListAccount.txt", ios::app);
+    if (!accList) {
+        cout << "Error opening account list!" << endl;
+        return;
+    }
+    accList << username << endl;
+    accList.close();
+
+    cout << "Sign Up Successful!" << endl;
+}
