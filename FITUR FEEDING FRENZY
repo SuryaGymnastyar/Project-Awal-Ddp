@@ -219,3 +219,51 @@ int main() {
            printf("*");
            delay(10);
        }
+
+gotoxy(50, 2);
+       cout << "FEEDING FRENZY GAME";
+       gotoxy(55, 3);
+       cout << "Kelompok 7";
+       gotoxy(55, 22);
+       cout << "ILKOMP B";
+
+       gotoxy(8, 6);
+       cout << "1. Sign In";
+       gotoxy(8, 7);
+       cout << "2. Sign Up";
+       gotoxy(8, 8);
+       cout << "3. Play Game";
+       gotoxy(8, 9);
+       cout << "4. Exit";
+       
+       gotoxy(44, 6);
+       cout << "Masukkan Pilihan Anda [1,2,3,4]: ";
+       cin >> pil;
+       
+       switch (pil) {
+            case 1:
+                loggedIn = SignIn();
+                break;
+            case 2:
+                SignUp();
+                break;
+            case 3:
+                if (loggedIn) {
+                    startGame();
+                } else {
+                    cout << "\n \n \n \n \n \n                     			        		Please Sign In to play the game. \n";
+                    system("pause");
+                }
+                break;
+            case 4:
+                cout << "\n	\n \n \n \n \n								Exiting the game. Goodbye! \n";
+                return 0;
+            default:
+                cout << "\n \n \n \n \n \n  										Invalid choice. Please choose between 1 and 4.\n";
+                system("pause");
+        }
+    }
+    
+   endwin();
+   return 0;
+}
