@@ -1,1 +1,8 @@
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <string>
+#include <cmath>
+#include <ncurses/ncurses.h>
 
+using namespace std;
