@@ -108,3 +108,38 @@ void SignUp() {
 
     cout << "Sign Up Successful!" << endl;
 }
+
+bool SignIn() {
+    ifstream myFile;
+    string username, password, fileUsername, filePassword;
+    bool exist = false;
+
+    system("cls");
+    cout << "------------> LOGIN <------------" << endl;
+    cout << "Enter Username: ";
+    cin >> username;
+    cout << "Enter Password: ";
+    cin >> password;
+
+    myFile.open(username + ".txt");
+    if (!myFile) {
+        cout << "Error opening user file!" << endl;
+        return false;
+    }
+
+    getline(myFile, filePassword);
+    if (filePassword == password) {
+        exist = true;
+    }
+    myFile.close();
+
+    if (exist) {
+        cout << "\n Sign In Successful!" << endl;
+        system("pause");
+        return true;
+    } else {
+        cout << "\n Sign In Failed! Try Again." << endl;
+        system("pause");
+        return false;
+    }
+}
