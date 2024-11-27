@@ -17,3 +17,62 @@ void gotoxy(int x, int y) {
     coord.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
+void loadingawal() {
+    system("color 3F");
+	initscr();
+	
+	curs_set(0);
+	
+	start_color();
+	init_pair(1, COLOR_WHITE, COLOR_BLUE);
+	init_pair(2, COLOR_WHITE, COLOR_CYAN);	
+	
+	bkgd(COLOR_PAIR(2));
+
+	for (int f = 0; f < LINES; f++){	
+	attron(COLOR_PAIR(2));
+    mvprintw(22 - f, 21, " 00         00   0000000   000         00000      0000000    0000000000   0000000      ");
+    mvprintw(23 - f, 21, " 00         00   00        000       00     00   00     00   0000000000   00           ");
+    mvprintw(24 - f, 21, " 00   000   00   0000000   000       00          00     00   00  00  00   0000000      ");
+    mvprintw(25 - f, 21, " 00   000   00   0000000   000       00          00     00   00  00  00   0000000      ");           
+    mvprintw(26 - f, 21, " 00   000   00   00        0000000   00     00   00     00   00  00  00   00           ");
+    mvprintw(27 - f, 21, "    000  000     0000000   0000000     00000      0000000    00  00  00   0000000      ");
+    mvprintw(28 - f, 21, "                                                                                       ");
+    refresh();
+    Sleep(50);
+}
+    clear();
+	bkgd(COLOR_PAIR(2));
+
+	for (int i = 0; i <= COLS; i++){
+	mvprintw(2, i, "o");
+	mvprintw(LINES - 4, i, "o");
+	mvprintw(10, i, "o");
+	mvprintw(LINES - 12, i, "o");
+	refresh();
+	Sleep(20);
+	}
+	
+	attron(COLOR_PAIR(2));
+	mvprintw(12, 50, "     LOGGED IN      ");
+	mvprintw(13, 50, " ------------------ ");
+	mvprintw(14, 50, "|                  |");
+	mvprintw(15, 50, " ------------------ ");
+		
+	int load = 1;
+		
+	for (int j = 1; j <= 100; j++){
+	if (j % 6 == 0 ) load++;
+	attron(COLOR_PAIR(1));
+	mvprintw(14, 50 + load, " ");
+	attron(COLOR_PAIR(2));
+	mvprintw(16, 54, "Loading ");
+	mvprintw(16, 63, "  %%", j);
+	mvprintw(16, 62, "%d");
+	refresh();
+	Sleep(50);
+	}
+		
+	endwin();
+}
